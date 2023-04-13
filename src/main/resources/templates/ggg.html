@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/rep/css.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/rep/css.css">
+
+</head>
+<body>
+  <div class="blocos">
+    <div class="bloco-anime" th:each="media : ${bomdia.getPage().getMedia()}">
+      <img class="foto" th:src="${media.getCoverImage().getLarge()}" />
+      <h3 class="titulo" th:text="${media.getTitle().getRomaji()}"/>
+    </div>
+  </div>
+<div class="alinhar-centro">
+    <ul class="nav">
+        <li>
+            <a th:href=" '/ggg?page='+${bomdia.getPage().getPageInfo().getCurrentPage() +1}"> UP </a></li>
+
+    </ul>
+</div>
+</body>
+</html>

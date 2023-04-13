@@ -1,0 +1,42 @@
+
+
+
+body{
+    background-color: #06283D;
+}
+
+.blocos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    background-color: #47B5FF;
+}
+
+
+.bloco-anime {
+    width: 15%;
+    margin: 1%;
+    text-overflow: clip;
+    overflow: auto;
+    text-align: center;
+    background-color: #256D85;
+    padding: 1%;
+}
+
+.titulo{
+    height: 5%;
+    position: relative;
+    align-self: start;
+    text-overflow: ellipsis;
+    font-family: Verdana;
+
+}
+
+img{
+    width: 100%;
+    border-radius: 2%;
+    align-self: baseline;
+    alignment: bottom;
+    height: 300px;
+}
+
