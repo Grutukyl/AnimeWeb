@@ -3,18 +3,29 @@
 <head>
   <title>Getting Started: Serving Web Content</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link th:href="@{/rep/css.css}" rel="stylesheet"/>
-  <link rel="stylesheet" href="../static/rep/css.css">
+    <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/rep/css.css}" rel="stylesheet"/>
 
 </head>
 <body>
-  <div class="blocos">
-    <div class="bloco-anime" th:each="media : ${bomdia.getPage().getMedia()}">
-      <img class="foto" th:src="${media.getCoverImage().getLarge()}" />
-      <h3 class="titulo" th:text="${media.getTitle().getRomaji()}"/>
-    </div>
-  </div>
-<div class="alinhar-centro">
+
+
+
+      <div class="container">
+          <ul class="card-group blocos">
+              <li class="card" th:each="media : ${bomdia.getPage().getMedia()}">
+                  <img class="card-img-top" th:src="${media.getCoverImage().getLarge()}" />
+                  <p class="card-title h5 text-center" th:text="${media.getTitle().getRomaji()}"/>
+              </li>
+          </ul>
+      </div>
+
+
+      <form th:action="@{logout}" method="post">
+          <div><input type="submit" value="Logout"/></div>
+      </form>
+
+<div class="col">
     <ul class="nav">
         <li>
             <a th:href=" '/ggg?page='+${bomdia.getPage().getPageInfo().getCurrentPage() +1}"> UP </a></li>

@@ -2,14 +2,13 @@
 
 
 body{
-    background-color: #06283D;
+    background-image: url("wallpaper.jfif");;
 }
 
 .blocos {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    background-color: #47B5FF;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 2vh;
+
 }
 
 

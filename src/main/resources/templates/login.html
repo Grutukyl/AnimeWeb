@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Spring Security Example </title>
+    <link th:href="@{/rep/csslogin.css}" rel="stylesheet"/>
+  <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+
+  <script src="../webjars/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/rep/csslogin.css">
+    <link rel="stylesheet" href="../static/rep/bootstrap.min.css">
+</head>
+<body >
+
+<div class="containerr">
+    <div class="formLogin border shadow">
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-info">
+            You have been logged out.
+        </div>
+
+        <form th:action="@{/login}" method="POST">
+            <div class="mb-3">
+                <label class="form-check-label  " for="username">Usuario:
+                    <input class="form-control"  type="text" id="username" name="username">
+                </label>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-check-label">Senha:
+                    <input class="form-control" type="password" name="password" id="password">
+                </label>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary" value="Logar">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>
