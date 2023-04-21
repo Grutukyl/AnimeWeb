@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +31,16 @@ public class AutenticarController {
 
     @RequestMapping(value = "/registrar",method = RequestMethod.POST)
     public String Registrar(Usuario usuario){
-        System.out.println("Usuario registrado, new user.");
-        userRepo.save(usuario);
-        return "redirect:/registrar";
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
+
+        if(userRepo.existsByEmail(usuario.getEmail()) == false) {
+            System.out.println("Usuario registrado, new user.");
+            userRepo.save(usuario);
+            return "redirect:/login?cadastrado";
+        }else{
+            return "redirect:/login?cadastradoErro";
+        }
     }
 
     @GetMapping("/usuarios")
@@ -55,6 +63,14 @@ public class AutenticarController {
 
         return "login";
     }
+
+    @GetMapping(value = "/cadastrar")
+    public String registrarr(Model model){
+        return "registrarr";
+    }
+
+
+
 
 
 }

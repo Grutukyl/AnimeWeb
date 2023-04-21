@@ -10,4 +10,8 @@ public interface UsuarioRepository extends CrudRepository<Usuario,String> {
     List<Usuario> findByNomeContainingIgnoreCase(String nome);
 
     Usuario findUsuarioByEmail(String email);
+
+    boolean existsByEmail(String email);
+
+
 }

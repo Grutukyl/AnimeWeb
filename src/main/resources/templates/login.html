@@ -20,6 +20,12 @@
         <div th:if="${param.logout}" class="alert alert-info">
             You have been logged out.
         </div>
+        <div th:if="${param.cadastrado}" class="alert alert-info">
+            Cadastrado.
+        </div>
+        <div th:if="${param.cadastradoErro}" class="alert alert-danger">
+            e-mail já cadastrado.
+        </div>
 
         <form th:action="@{/login}" method="POST">
             <div class="mb-3">
@@ -34,6 +40,11 @@
             </div>
             <div class="mb-3">
                 <input type="submit" class="btn btn-primary" value="Logar">
+            </div>
+        </form>
+        <form th:action="@{/cadastrar}" method="GET">
+            <div class="mb-2">
+                <input type="submit" class="btn btn-primary" value="Registrar-se">
             </div>
         </form>
     </div>
