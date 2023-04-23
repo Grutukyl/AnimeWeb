@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="pt">
 <head>
   <title>Spring Security Example </title>
     <link th:href="@{/rep/csslogin.css}" rel="stylesheet"/>
@@ -10,21 +10,24 @@
     <link rel="stylesheet" href="../static/rep/csslogin.css">
     <link rel="stylesheet" href="../static/rep/bootstrap.min.css">
 </head>
-<body >
+<body class="fundoLogin">
 
 <div class="containerr">
     <div class="formLogin border shadow">
         <div th:if="${param.error}" class="alert alert-danger">
-            Invalid username and password.
+            Usuário ou senha inválidos ou inexistentes.
         </div>
         <div th:if="${param.logout}" class="alert alert-info">
-            You have been logged out.
+            Deslogado com sucesso.
         </div>
         <div th:if="${param.cadastrado}" class="alert alert-info">
             Cadastrado.
         </div>
         <div th:if="${param.cadastradoErro}" class="alert alert-danger">
             e-mail já cadastrado.
+        </div>
+        <div th:if="${param.timeOut}" class="alert alert-danger">
+            Sessão expirou.
         </div>
 
         <form th:action="@{/login}" method="POST">

@@ -1,7 +1,23 @@
+html{
+    height: 100%;
+    font-size: 1vw;
 
-body{
+
+}
+
+.fundoLogin{
     background-image: url("wallpaper.jfif");;
-    background-size: 100% auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.fundoRegistro {
+    background-image: url("fundoRegistro.jpg");;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
 .containerr{

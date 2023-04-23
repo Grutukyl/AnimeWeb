@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,6 +19,9 @@ public class Media {
         public int id;
         @JsonProperty("season")
         public String season;
+
+        public String description;
+        public List<String> genres;
 
         public coverImage coverImage;
         public Title title;
