@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+  <link th:href="@{/rep/css.css}" rel="stylesheet"/>
+
+</head>
+<body>
+
+<header class="bg-dark p-2" style="--bs-bg-opacity: .5;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <a th:href="@{/ggg}"> <h1>Meu Site</h1></a>
+      </div>
+      <div class="col-6 text-end">
+        <button class="btn btn-danger">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <img th:src="${media.getCoverImage().getLarge()}" class="img-fluid" alt="Cover Image">
+    </div>
+    <div class="col-md-8">
+      <h1 class="mb-4" th:text="${media.getTitle().getRomaji()}">Titulo: </h1>
+      <h4 class="mb-4" th:text="${media.getSeason()}" ></h4>
+      <h4 class="mb-4" th:text="${generos}">Gêneros:</h4>
+      <p class="mb-4" th:text="${media.getDescription()}">Descricao: </p>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
