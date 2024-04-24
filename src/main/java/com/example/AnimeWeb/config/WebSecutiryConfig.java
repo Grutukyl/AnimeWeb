@@ -3,6 +3,7 @@ package com.example.AnimeWeb.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,34 +21,35 @@ public class WebSecutiryConfig {
     @Autowired
     private final JpaUserDetailsService jpaUserDetailsService;
 
-
     public WebSecutiryConfig(JpaUserDetailsService jpaUserDetailsService) {
         this.jpaUserDetailsService = jpaUserDetailsService;
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws  Exception{
-               http.authorizeRequests()
-                       .antMatchers("/rep/**").permitAll()
-                       .antMatchers("/cadastrar","/static/**").permitAll()
-                       .antMatchers("/registrar", "/static/**").permitAll()
-                       .antMatchers("/login*" , "/static/**").permitAll()
-                       .anyRequest()
-                       .authenticated()
-                       .and()
-                       .formLogin()
-                       .loginPage("/login")
-                       .defaultSuccessUrl("/ggg", true)
-                       .failureUrl("/login?error")
-                       .and()
-                       .logout()
-                       .logoutUrl("/logout")
-                       .deleteCookies("JSESSIONID")
-                       .clearAuthentication(true)
-                       .and()
-                       .sessionManagement()
-                       .invalidSessionUrl("/login?timeOut");
-                       return http.build();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/rep/**").permitAll()
+                        .requestMatchers("/favoritos").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/favoritos").permitAll()
+                        .requestMatchers("/cadastrar","/static/**").permitAll()
+                        .requestMatchers("/registrar", "/static/**").permitAll()
+                        .anyRequest().authenticated()
+                ).formLogin((formLogin) -> formLogin
+                        .loginPage("/login")
+                        .permitAll()
+                        .defaultSuccessUrl("/listagem", true)
+                ).logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .permitAll()
+                        .deleteCookies("JSESSIONID")
+                        .clearAuthentication(true)
+                ).sessionManagement((sessionManagement) -> sessionManagement
+                        .invalidSessionUrl("/login?timeOut")
+                ).csrf((csrf) -> csrf
+                        .ignoringRequestMatchers("/favoritos")
+                );
+        return http.build();
     }
 
     @Bean

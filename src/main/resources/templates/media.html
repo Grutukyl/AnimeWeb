@@ -1,41 +1,94 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt">
 <head>
-  <title>Getting Started: Serving Web Content</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
-  <link th:href="@{/rep/css.css}" rel="stylesheet"/>
+    <title>AnimeWEB</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/rep/css.css}" rel="stylesheet"/>
+    <link th:href="@{/rep/Listagem.css}" rel="stylesheet"/>
+    <script th:src="@{/rep/javascript.js}"></script>
 
 </head>
-<body>
+<body class="midia">
+        <div class="box1">
+            <div class="caixaHeader">
+                <a  th:href="'/listagem'"><img class="logo" th:src="@{/rep/logoHorizontal.png}"></a>
+                <div class="caixaBuscaLinks">
+                    <div class="links">Horror</div>
+                    <div class="links">Horror</div>
+                    <div class="links">Horror</div>
+                    <div class="links">Horror</div>
+                    <div class="links">Horror</div>
+                    <div class="links">Horror</div>
+                </div>
+            </div>
+            <div class="caixaBuscaHeader">
+                <div class="box2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="searchIco" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                    <input class="buscaTexto" type="text" placeholder="buscar..." >
+                </div>
+                <form th:action="@{logout}" method="post">
+                    <div>
+                        <input class="btn btn-danger logout" type="submit" value="Logout"/>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<header class="bg-dark p-2" style="--bs-bg-opacity: .5;">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-6">
-        <a th:href="@{/ggg}"> <h1>Meu Site</h1></a>
+  <div class="container midiaContainer">
+      <div class="row">
+          <div class="col-md-4">
+              <img th:src="${media.getCoverImage().getLarge()}" class="img-fluid imgMidia" alt="Cover Image">
+          </div>
+          <div class="col-md-8">
+              <div class="row">
+                  <div class="col-md-10">
+                      <h1 class="mb-4" th:text="${media.getTitle().getRomaji()}">Titulo </h1>
+                  </div>
+                    <div class="col-md-2 my-auto">
+                        <label class="containerLike favorito">
+                            <span th:text="${favoritos.contains(media.getId()) ? 'Desfavoritar' : 'Favoritar'}"></span>
+
+                            <input type="checkbox"  th:checked="${favoritos.contains(media.getId())}"
+                                   th:data-parameter1="${media.getId()}"
+                                   th:data-parameter2="${media.getTitle().getRomaji()}"
+                                   th:data-parameter3="${media.getCoverImage().getLarge()}"
+                                   th:onclick="salvarFavorito(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'), this.getAttribute('data-parameter3')); atualizarTextoFavorito(this)"/>
+                            <svg id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z"></path></svg>
+                        </label>
+                    </div>
+              </div>
+              <div class="row">
+                  <div class="col-1 mx-3 p-2 caixaInfos">
+                        <span class="text-muted small"> <strong>Ano</strong></span>
+                      <h4 class="" th:text="${media.getSeasonYear()}">Ano: </h4>
+                  </div>
+                  <div class="col-2 mx-3 p-2 caixaInfos">
+                      <span class="text-muted small"> <strong>Season:</strong></span>
+                      <h4 class="" th:text="${media.getSeason() }"></h4>
+                  </div>
+                  <div class="col-1 mx-3 p-2 caixaInfos">
+                      <span class="text-muted small"> <strong>Score</strong></span>
+                      <h4 class="" th:text="${media.getAverageScore()}">Score</h4>
+                  </div>
+                  <div class="col-6 mx-3 p-2 caixaInfos">
+                      <span class="text-muted small"> <strong>Gêneros</strong></span>
+                      <h4 class="" th:text="${generos}">Gêneros:</h4>
+                  </div>
+
+              </div>
+              <div class="row">
+                  <p class="my-4" th:text="${media.getDescription()}">Descricao: </p>
+              </div>
+          </div>
       </div>
-      <div class="col-6 text-end">
-        <button class="btn btn-danger">Logout</button>
-      </div>
-    </div>
   </div>
-</header>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <img th:src="${media.getCoverImage().getLarge()}" class="img-fluid" alt="Cover Image">
-    </div>
-    <div class="col-md-8">
-      <h1 class="mb-4" th:text="${media.getTitle().getRomaji()}">Titulo: </h1>
-      <h4 class="mb-4" th:text="${media.getSeason()}" ></h4>
-      <h4 class="mb-4" th:text="${generos}">Gêneros:</h4>
-      <p class="mb-4" th:text="${media.getDescription()}">Descricao: </p>
-
-    </div>
-  </div>
-</div>
+        <div >
+            <span class="rodape">© 2023 ANIME WEB</span>
+        </div>
 
 </body>
 </html>

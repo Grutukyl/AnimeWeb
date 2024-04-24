@@ -13,7 +13,9 @@ public class UsuarioDetals implements UserDetails {
     public UsuarioDetals(Usuario user) {
         this.user = user;
     }
-
+    public Usuario getUser() {
+        return user;
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

@@ -2,57 +2,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="pt">
 <head>
-  <title>Spring Security Example </title>
+    <title>Login</title>
     <link th:href="@{/rep/csslogin.css}" rel="stylesheet"/>
-  <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
-
-  <script src="../webjars/bootstrap.min.js"></script>
+    <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+    <script src="../webjars/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../static/rep/csslogin.css">
     <link rel="stylesheet" href="../static/rep/bootstrap.min.css">
+    <meta charset="UTF-8">
 </head>
 <body class="fundoLogin">
 
 <div class="containerr">
-    <div class="formLogin border shadow">
-        <div th:if="${param.error}" class="alert alert-danger">
-            Usuário ou senha inválidos ou inexistentes.
-        </div>
-        <div th:if="${param.logout}" class="alert alert-info">
-            Deslogado com sucesso.
-        </div>
-        <div th:if="${param.cadastrado}" class="alert alert-info">
-            Cadastrado.
-        </div>
-        <div th:if="${param.cadastradoErro}" class="alert alert-danger">
-            e-mail já cadastrado.
-        </div>
-        <div th:if="${param.timeOut}" class="alert alert-danger">
-            Sessão expirou.
-        </div>
 
-        <form th:action="@{/login}" method="POST">
-            <div class="mb-3">
-                <label class="form-check-label  " for="username">Usuario:
-                    <input class="form-control"  type="text" id="username" name="username">
-                </label>
+    <div class="formLogin shadow">
+        <div class="text-center ">
+            <img class="text-center" th:src="@{/rep/logoAnime.png}" alt="logo animeweb" width="380px">
+        </div>
+        <div>
+            <div th:if="${param.error}" class="alert alert-danger">
+                Usuário ou senha inválidos ou inexistentes.
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-check-label">Senha:
-                    <input class="form-control" type="password" name="password" id="password">
-                </label>
+            <div th:if="${param.logout}" class="alert alert-info">
+                Deslogado com sucesso.
             </div>
-            <div class="mb-3">
-                <input type="submit" class="btn btn-primary" value="Logar">
+            <div th:if="${param.cadastrado}" class="alert alert-info">
+                Cadastrado.
             </div>
-        </form>
-        <form th:action="@{/cadastrar}" method="GET">
-            <div class="mb-2">
-                <input type="submit" class="btn btn-primary" value="Registrar-se">
+            <div th:if="${param.cadastradoErro}" class="alert alert-danger">
+                e-mail já cadastrado.
             </div>
-        </form>
+            <div th:if="${param.timeOut}" class="alert alert-danger">
+                Sessão expirou.
+            </div>
+
+            <form th:action="@{/login}" method="POST">
+                <h2 class="mb-3 titulo">Login</h2>
+                <div class="mb-3">
+                    <label class="form-check-label  " for="username">
+                        <input class="form-control" type="text" id="username" name="username" placeholder="Usuario...">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-check-label">
+                        <input class="form-control" type="password" name="password" id="password" placeholder="Senha...">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary loginBt" value="Logar">
+                </div>
+            </form>
+            <form th:action="@{/cadastrar}" method="GET">
+                <div class="mb-2">
+                    <p class="text-white-50">Não possui uma conta?</p>
+                    <input type="submit" class="btn btn-primary registrarBt" value="Registrar-se">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
 
 
 </body>

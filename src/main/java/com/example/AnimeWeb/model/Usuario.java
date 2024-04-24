@@ -1,15 +1,8 @@
 package com.example.AnimeWeb.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NonNull;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,7 +13,6 @@ public class Usuario {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String nome;
     @Column
@@ -33,6 +25,8 @@ public class Usuario {
     private String estado;
     @Column
     private String sobrenome;
-    // getters and setters are not shown for brevity
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Favorito> favoritos;
 
 }

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous"
+    />
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/rep/common.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/rep/fonts.css}"/>
+    <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/rep/Listagem.css}"/>
+    <script th:src="@{/rep/javascript.js}"></script>
+
+    <link href="/rep/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/rep/common.css">
+    <link rel="stylesheet" href="../static/rep/css.css">
+    <link rel="stylesheet" href="../static/rep/Listagem.css">
+</head>
+
+<body>
+<div class="listagem">
+    <div class="box" th:class="${filtros.getGeneros().contains('hentai') ? 'box box3' : 'box'}">
+        <div class="box1">
+            <div class="caixaHeader">
+                <a  th:href="'/listagem'"><img class="logo" th:src="@{/rep/logoHorizontal.png}"></a>
+                <div class="caixaBuscaLinks">
+                    <div class="links">Início</div>
+                    <div class="links">Lista</div>
+                    <div class="links">Filmes</div>
+                    <div class="links">Check</div>
+                    <div class="links">Temporada</div>
+
+                </div>
+            </div>
+            <div class="caixaBuscaHeader">
+                <div class="box2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="searchIco" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                    <form class="formBusca" method="get" th:action="@{/listagem}">
+                    <input class="buscaTexto" type="text"  name="buscaNome" placeholder="Buscar..." >
+                    </form>
+                </div>
+                <form th:action="@{logout}" method="post">
+                    <div>
+                        <input class="btn btn-danger logout" type="submit" value="Logout"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="wrapper12">
+            <div class="conteudo">
+                <form class="formBusca" id="buscaForm" th:action="@{/listagem}" method="get">
+                    <div class="radio-inputs" onclick="submitForm()">
+                        <label class="radio">
+                            <input type="radio" name="type" id="anime" value="ANIME" th:checked="${filtros.getType().equalsIgnoreCase('ANIME')}">
+                            <span class="name">Anime</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="type" id="manga" value="MANGA" th:checked="${filtros.getType().equalsIgnoreCase('MANGA')}">
+                            <span class="name">Manga</span>
+                        </label>
+
+                    </div>
+                    <!--   <div class="radio-inputs pp">
+                           <div class="checkbox-wrapper-10">
+                               <input type="checkbox" id="hentai" class="tgl tgl-flip" name="generos" value="hentai" onclick="submitForm()" th:checked="${filtros.getGeneros().contains('hentai')}">
+                               <label for="hentai" data-tg-on="Back to reality" data-tg-off="Entry sweet world" class="tgl-btn"></label>
+                           </div>
+                    </div> -->
+                    <div class="caixaBusca">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="searchIco" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                        <input class="buscaTexto" type="text"  name="buscaNome" placeholder="Buscar por nome..." th:value="${filtros.getBuscaNome()}" >
+                    </div>
+
+                    <div class="caixaGeneros">
+                        <div class="generos">
+                            <input  class="generoCheckbox" type="checkbox" id="action"
+                                    th:checked="${filtros.getGeneros().contains('action')}" name="generos"
+                                    value="action">
+                            <label class="genero" for="action"> Action </label>
+                            <input  class="generoCheckbox" type="checkbox" id="adventure"
+                                    th:checked="${filtros.getGeneros().contains('adventure')}" name="generos"
+                                    value="adventure">
+                            <label class="genero" for="adventure"> Adventure </label>
+                            <input  class="generoCheckbox" type="checkbox" id="comedy"
+                                    th:checked="${filtros.getGeneros().contains('comedy')}" name="generos"
+                                    value="comedy">
+                            <label class="genero" for="comedy"> Comedy </label>
+                            <input  class="generoCheckbox" type="checkbox" id="drama"
+                                    th:checked="${filtros.getGeneros().contains('drama')}" name="generos"
+                                    value="drama">
+                            <label class="genero" for="drama"> Drama </label>
+                            <input  class="generoCheckbox" type="checkbox" id="fantasy"
+                                    th:checked="${filtros.getGeneros().contains('fantasy')}" name="generos"
+                                    value="fantasy">
+                            <label class="genero" for="fantasy"> Fantasy </label>
+                            <input  class="generoCheckbox" type="checkbox" id="horror"
+                                    th:checked="${filtros.getGeneros().contains('horror')}" name="generos"
+                                    value="horror">
+                            <label class="genero" for="horror"> Horror </label>
+                            <input  class="generoCheckbox" type="checkbox" id="mystery"
+                                    th:checked="${filtros.getGeneros().contains('mystery')}" name="generos"
+                                    value="mystery">
+                            <label class="genero" for="mystery"> Mystery </label>
+                            <input class="generoCheckbox" type="checkbox" id="supernatural"
+                                   th:checked="${filtros.getGeneros().contains('supernatural')}" name="generos"
+                                   value="supernatural">
+                            <label class="genero" for="supernatural"> Supernatural </label>
+                            <input class="generoCheckbox" type="checkbox" id="thriller"
+                                   th:checked="${filtros.getGeneros().contains('thriller')}" name="generos"
+                                   value="thriller">
+                            <label class="genero" for="thriller"> Thriller </label>
+                            <input class="generoCheckbox" type="checkbox" id="psychological"
+                                   th:checked="${filtros.getGeneros().contains('psychological')}" name="generos"
+                                   value="psychological">
+                            <label class="genero" for="psychological"> Psychological </label>
+                            <input class="generoCheckbox" type="checkbox" id="slice"
+                                   th:checked="${filtros.getGeneros().contains('Slice of life')}" name="generos"
+                                   value="Slice of life">
+                            <label class="genero" for="slice"> Slice of life </label>
+                            <input class="generoCheckbox" type="checkbox" id="romance"
+                                   th:checked="${filtros.getGeneros().contains('romance')}" name="generos"
+                                   value="romance">
+                            <label class="genero" for="romance"> Romance </label>
+                            <input class="generoCheckbox" type="checkbox" id="Sci-Fi"
+                                   th:checked="${filtros.getGeneros().contains('Sci-Fi')}" name="generos"
+                                   value="Sci-Fi">
+                            <label class="genero" for="Sci-Fi"> Sci-Fi </label>
+                            <input class="generoCheckbox" type="checkbox" id="sports"
+                                   th:checked="${filtros.getGeneros().contains('sports')}" name="generos"
+                                   value="sports">
+                            <label class="genero" for="sports"> Sports </label>
+                        </div>
+
+                    </div>
+                </form>
+
+                <div class="grid1">
+                    <div class="caixaImagem" th:each="media : ${listagem.getPage().getMedia()}">
+
+                        <a class="linkAnime" th:href=" '/media/' + ${media.getId()}">
+                            <img class="imgCard" th:src="${media.getCoverImage().getLarge()}"  alt="Cover image"/>
+                        </a>
+                        <p class="tituloCaixa h5" th:text="${media.getTitle().getRomaji()}" ></p>
+                        <label class="containerLike favorito">
+                            <span th:text="${favoritos.contains(media.getId()) ? 'Desfavoritar' : 'Favoritar'}"></span>
+
+                            <input type="checkbox"  th:checked="${favoritos.contains(media.getId())}"
+                                   th:data-parameter1="${media.getId()}"
+                                   th:data-parameter2="${media.getTitle().getRomaji()}"
+                                   th:data-parameter3="${media.getCoverImage().getLarge()}"
+                                   th:onclick="salvarFavorito(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'), this.getAttribute('data-parameter3')); atualizarTextoFavorito(this)"/>
+                            <svg id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z"></path></svg>
+                        </label>
+                    </div>
+                </div>
+
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" th:if="${listagem.getPage().getPageInfo().getCurrentPage() <= 1 }" th:href=" '/listagem?page='+${listagem.getPage().getPageInfo().getCurrentPage() -1}"> Anterior </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" th:if="${filtros.getBuscaNome().isBlank() && listagem.getPage().getPageInfo().getCurrentPage() > 1 }" th:href=" '/listagem?page='+${listagem.getPage().getPageInfo().getCurrentPage() -1}"> Anterior </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" th:if="${!(nomeBusca == null) && listagem.getPage().getPageInfo().getCurrentPage() > 1 }" th:href=" '/listagem?page='+${listagem.getPage().getPageInfo().getCurrentPage() -1}+'&buscaNome='+${nomeBusca}"> Anterior </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" th:text="${listagem.getPage().getPageInfo().getCurrentPage()}"><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" th:if="${filtros.getBuscaNome().isBlank()}" th:href=" '/listagem?page='+${listagem.getPage().getPageInfo().getCurrentPage() +1}"> Próxima </a>
+                            <a class="page-link" th:if="${!(nomeBusca == null)}" th:href=" '/listagem?page='+${listagem.getPage().getPageInfo().getCurrentPage() +1}+'&buscaNome='+${nomeBusca}"> Próxima </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            </div>
+        <div >
+            <span class="rodape">© 2023 ANIME WEB</span>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

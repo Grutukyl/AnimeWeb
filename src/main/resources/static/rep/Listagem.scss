@@ -1,0 +1,487 @@
+@use "utils" as *;
+@use "global" as *;
+
+.listagem {
+  &.root {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+  }
+  .box {
+    background-color: rgb(28, 13, 48);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .box1 {
+    align-items: center;
+    border-color: rgb(229, 232, 235);
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    display: flex;
+    padding: 12px 40px 12px 40px;
+  }
+  .wrapper1 {
+    align-items: center;
+    display: flex;
+    gap: 0px 10px;
+    justify-content: space-between;
+    min-height: 23px;
+    width: 657px;
+  }
+  .wrapper2 {
+    align-items: center;
+    display: flex;
+    gap: 0px 16px;
+    min-height: 23px;
+    width: 133px;
+  }
+  .wrapper3 {
+    display: flex;
+    flex-direction: column;
+    width: 16px;
+  }
+  .wrapper31 {
+    background: var(--src) center center / 100% 100% no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 16px;
+    overflow: hidden;
+  }
+  .wrapper4 {
+    display: flex;
+    flex-direction: column;
+    min-width: 101px;
+    width: 101px;
+  }
+  .wrapper41 {
+    display: flex;
+    flex-direction: column;
+    min-width: 101px;
+  }
+  .wrapper42 {
+    color: rgb(255, 255, 255);
+    font: 700 18px/1.25 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    letter-spacing: -0.28px;
+  }
+  .wrapper5 {
+    align-items: center;
+    display: flex;
+    gap: 0px 35px;
+    min-height: 21px;
+    width: 493px;
+  }
+  .wrapper6 {
+    display: flex;
+    flex-direction: column;
+    width: 44px;
+  }
+  .wrapper61 {
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper62 {
+    color: rgb(255, 255, 255);
+    font: 500 14px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+  }
+  .wrapper63 {
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+  }
+  .wrapper64 {
+    display: flex;
+    flex-direction: column;
+    min-width: 59px;
+    width: 59px;
+  }
+  .wrapper65 {
+    display: flex;
+    flex-direction: column;
+    min-width: 59px;
+  }
+  .wrapper66 {
+    display: flex;
+    flex-direction: column;
+    width: 45px;
+  }
+  .wrapper67 {
+    display: flex;
+    flex-direction: column;
+    min-width: 53px;
+    width: 53px;
+  }
+  .wrapper68 {
+    display: flex;
+    flex-direction: column;
+    min-width: 53px;
+  }
+  .wrapper69 {
+    display: flex;
+    flex-direction: column;
+    min-width: 44px;
+    width: 44px;
+  }
+  .wrapper610 {
+    display: flex;
+    flex-direction: column;
+    min-width: 44px;
+  }
+  .wrapper7 {
+    align-items: center;
+    display: flex;
+    gap: 0px 32px;
+    margin: 0px -1px 0px 1px;
+    min-height: 40px;
+    width: 544px;
+  }
+  .box2 {
+    align-items: center;
+    background-color: rgb(56, 23, 94);
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    gap: 0px 12px;
+    margin: 0px 0px 0px 95px;
+    min-height: 40px;
+    padding: 8px 16px 8px 16px;
+    width: 260px;
+  }
+  .wrapper8 {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+  }
+  .wrapper81 {
+    background: var(--src) center center / 100% 100% no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 24px;
+    overflow: hidden;
+  }
+  .wrapper9 {
+    display: flex;
+    flex-direction: column;
+    width: 192px;
+  }
+  .wrapper91 {
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper92 {
+    color: rgb(168, 125, 222);
+    font: 400 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+  }
+  .wrapper10 {
+    display: flex;
+    width: 84px;
+  }
+  .wrapper101 {
+    align-items: center;
+    background-color: rgb(56, 23, 94);
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    overflow: hidden;
+    padding: 0px 16px 0px 16px;
+    width: 84px;
+  }
+  .box3 {
+    background-color: rgb(56, 23, 94);
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 1px;
+    min-width: 51px;
+    overflow: hidden;
+    width: 51px;
+  }
+  .wrapper11 {
+    display: flex;
+    flex-direction: column;
+    min-width: 51px;
+  }
+  .wrapper111 {
+    color: rgb(255, 255, 255);
+    font: 700 14px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    letter-spacing: 0.2px;
+  }
+  .image {
+    border-radius: 20px 20px 20px 20px;
+    height: 40px;
+    margin: 0px 1px 0px 0px;
+    width: 40px;
+  }
+  .wrapper12 {
+    display: flex;
+    padding: 20px 160px 20px 160px;
+  }
+  .wrapper121 {
+    display: flex;
+    flex-direction: column;
+    width: 960px;
+  }
+  .wrapper13 {
+    display: flex;
+    padding: 12px 16px 12px 16px;
+  }
+  .wrapper131 {
+    align-items: center;
+    background-color: rgb(56, 23, 94);
+    border-radius: 24px 24px 24px 24px;
+    display: flex;
+    gap: 0px 12px;
+    padding: 12px 16px 12px 16px;
+    width: 928px;
+  }
+  .wrapper93 {
+    display: flex;
+    flex-direction: column;
+    width: 860px;
+  }
+  .wrapper94 {
+    color: rgb(168, 125, 222);
+    font: 400 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    letter-spacing: -0.1px;
+  }
+  .wrapper14 {
+    display: flex;
+    flex-direction: column;
+  }
+  .grid {
+    align-content: start;
+    column-gap: 11px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    margin: 12px auto;
+    min-height: 76px;
+    row-gap: 12px;
+    width: 94.48%;
+  }
+  .item {
+    align-items: center;
+    background-color: rgb(56, 23, 94);
+    border-radius: 16px 16px 16px 16px;
+    display: flex;
+    grid-column: span 1;
+    grid-row: span 1;
+    padding: 0px 16px 0px 16px;
+  }
+  .item1 {
+    align-items: center;
+    background-color: rgb(56, 23, 94);
+    border-radius: 16px 16px 16px 16px;
+    display: flex;
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .wrapper611 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px 0px 16px;
+    min-width: 59px;
+    width: 59px;
+  }
+  .wrapper612 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px 0px 16px;
+    min-width: 45px;
+    width: 45px;
+  }
+  .wrapper613 {
+    display: flex;
+    flex-direction: column;
+    min-width: 45px;
+  }
+  .wrapper614 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px 0px 16px;
+    min-width: 53px;
+    width: 53px;
+  }
+  .wrapper615 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px 0px 16px;
+    min-width: 44px;
+    width: 44px;
+  }
+  .wrapper616 {
+    display: flex;
+    flex-direction: column;
+    width: 54px;
+  }
+  .wrapper617 {
+    display: flex;
+    flex-direction: column;
+    width: 94px;
+  }
+  .wrapper618 {
+    display: flex;
+    flex-direction: column;
+    width: 64px;
+  }
+  .wrapper619 {
+    display: flex;
+    flex-direction: column;
+    width: 37px;
+  }
+  .wrapper620 {
+    display: flex;
+    flex-direction: column;
+    width: 86px;
+  }
+  .wrapper621 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px 0px 16px;
+    min-width: 46px;
+    width: 46px;
+  }
+  .wrapper622 {
+    display: flex;
+    flex-direction: column;
+    min-width: 46px;
+  }
+  .wrapper15 {
+    display: flex;
+    flex-direction: column;
+  }
+  .grid1 {
+    align-content: start;
+    column-gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 16px 16px 15px;
+    min-height: 644px;
+    row-gap: 12px;
+  }
+  .item2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0px;
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .wrapper17 {
+    background: var(--src) center center / 100% 100% no-repeat;
+    border-radius: 12px 12px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 235px;
+    width: 100%;
+  }
+  .wrapper18 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 24px;
+    width: 100%;
+  }
+  .wrapper19 {
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper191 {
+    color: rgb(255, 255, 255);
+    font: 500 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 24px;
+    margin: 0px auto auto 0px;
+    width: 122px;
+  }
+  .wrapper20 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 12px;
+  }
+  .wrapper201 {
+    color: rgb(168, 125, 222);
+    font: 400 14px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 21px;
+    margin: 0px auto auto 0px;
+    width: 54px;
+  }
+  .wrapper181 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .wrapper192 {
+    color: rgb(255, 255, 255);
+    font: 500 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 48px;
+    margin: 0px auto auto 0px;
+    width: 176px;
+  }
+  .wrapper193 {
+    color: rgb(255, 255, 255);
+    font: 500 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 24px;
+    margin: 0px auto auto 0px;
+    width: 60px;
+  }
+  .wrapper194 {
+    color: rgb(255, 255, 255);
+    font: 500 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 24px;
+    margin: 0px auto auto 0px;
+    width: 154px;
+  }
+  .wrapper195 {
+    color: rgb(255, 255, 255);
+    font: 500 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 24px;
+    margin: 0px auto auto 0px;
+    width: 125px;
+  }
+  .wrapper196 {
+    color: rgb(255, 255, 255);
+    font: 500 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 24px;
+    margin: 0px auto auto 0px;
+    width: 157px;
+  }
+  .wrapper95 {
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper96 {
+    display: flex;
+    flex-direction: column;
+    height: 104px;
+    margin: 0px 160px;
+    width: 960px;
+  }
+  .wrapper97 {
+    display: flex;
+    flex-direction: column;
+    height: 104px;
+    width: 960px;
+  }
+  .wrapper98 {
+    display: flex;
+    flex-direction: column;
+    height: 24px;
+    margin: 40px 20px;
+    width: 920px;
+  }
+  .wrapper99 {
+    display: flex;
+    flex-direction: column;
+    height: 24px;
+    width: 920px;
+  }
+  .wrapper910 {
+    color: rgb(168, 125, 222);
+    display: flex;
+    font: 400 16px/1.5 "Plus Jakarta Sans", Helvetica, Arial, serif;
+    height: 24px;
+    justify-content: center;
+    margin: 0px auto auto 386.5px;
+    text-align: center;
+    width: 147px;
+  }
+}

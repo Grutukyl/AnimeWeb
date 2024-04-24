@@ -2,6 +2,7 @@ package com.example.AnimeWeb.Controler;
 
 import com.example.AnimeWeb.model.Usuario;
 import com.example.AnimeWeb.repository.UsuarioRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+
 
 @Controller
 public class AutenticarController {
@@ -33,8 +32,7 @@ public class AutenticarController {
     public String Registrar(Usuario usuario){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         usuario.setPassword(encoder.encode(usuario.getPassword()));
-
-        if(userRepo.existsByEmail(usuario.getEmail()) == false) {
+        if(!userRepo.existsByEmail(usuario.getEmail())) {
             System.out.println("Usuario registrado, new user.");
             userRepo.save(usuario);
             return "redirect:/login?cadastrado";
@@ -56,11 +54,9 @@ public class AutenticarController {
     @GetMapping(value = "/login")
     public String login(Model model, String error, String logout) {
         if (error != null)
-            model.addAttribute("error", "Confira seu usuario ou senha.");
-
+            model.addAttribute("error", "Confira o usuario ou senha.");
         if (logout != null)
             model.addAttribute("message", "Você se desconectou com sucesso.");
-
         return "login";
     }
 
@@ -68,9 +64,6 @@ public class AutenticarController {
     public String registrarr(Model model){
         return "registrarr";
     }
-
-
-
 
 
 }

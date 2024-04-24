@@ -11,26 +11,28 @@
         <link rel="stylesheet" href="../static/rep/bootstrap.min.css">
 </head>
 <body class="fundoRegistro">
-
+    <div>
+        <h1 class="center titulo">CADASTRAR</h1>
+    </div>
     <form th:action="@{/registrar}" class="containerr mt-5 formLogin" method="post">
             <input type="hidden" id="id" name="id" value="100">
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="nome">Nome:</label>
                 <input type="text" class="form-control" id="nome" name="nome">
             </div>
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="sobrenome">Sobrenome:</label>
                 <input type="text" class="form-control" id="sobrenome" name="sobrenome">
             </div>
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email">
             </div>
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="idade">Idade:</label>
                 <input type="text" class="form-control" id="idade" name="idade">
             </div>
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="estado">Estado:</label>
                 <select class="form-control" id="estado" name="estado">
                     <option value="AC">Acre</option>
@@ -63,15 +65,19 @@
                     <option value="EX">Estrangeiro</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="password">Senha:</label>
                 <input type="password" class="form-control" id="password" name="password">
             </div>
-            <div class="form-group">
+            <div class="form-group mx-sm-3 mb-2">
                 <label for="matchsenha">Confirme a senha:</label>
                 <input type="password" class="form-control" id="matchsenha" name="matchsenha">
             </div>
-        <button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
+            <div class="form-group mx-sm-3 mb-2">
+                <button type="button" class="btn btn-secondary mb-2" onclick="window.history.back()">voltar</button>
+                <button type="submit" class="btn btn-primary mb-2 registrarBt">Cadastrar</button>
+            </div>
+        
     </form>
 
 </body>
