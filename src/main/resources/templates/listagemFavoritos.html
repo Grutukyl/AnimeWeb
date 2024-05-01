@@ -1,43 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Seus animes favoritos</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/rep/css.css}" rel="stylesheet"/>
-    <link th:href="@{/rep/Listagem.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/rep/common.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/rep/fonts.css}"/>
+    <link th:href="@{/rep/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/rep/Listagem.css}"/>
     <script th:src="@{/rep/javascript.js}"></script>
+    <link href="/rep/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/rep/common.css">
+    <link rel="stylesheet" href="../static/rep/css.css">
+    <link rel="stylesheet" href="../static/rep/Listagem.css">
 
 </head>
 <body class="midia">
-<div class="box1">
-    <div class="caixaHeader">
-        <a  th:href="'/listagem'"><img class="logo" th:src="@{/rep/logoHorizontal.png}"></a>
-        <div class="caixaBuscaLinks">
-            <div class="links">Horror</div>
-            <div class="links">Horror</div>
-            <div class="links">Horror</div>
-            <div class="links">Horror</div>
-            <div class="links">Horror</div>
-            <div class="links">Horror</div>
-        </div>
-    </div>
-    <div class="caixaBuscaHeader">
-        <div class="box2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="searchIco" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-            </svg>
-            <input class="buscaTexto" type="text" placeholder="buscar..." >
-        </div>
-        <form th:action="@{logout}" method="post">
-            <div>
-                <input class="btn btn-danger logout" type="submit" value="Logout"/>
-            </div>
-        </form>
-    </div>
-</div>
+
+    <div th:include="header :: header"></div>
+
 
 <div class="container midiaContainer">
+    <span>Sua listagem de favoritos</span>
     <div class="grid1 grifFavoritos">
         <div class="caixaImagem" th:each="media : ${listaFavoritos}">
             <a class="linkAnime" th:href=" '/media/' + ${media.getIdMedia()}">

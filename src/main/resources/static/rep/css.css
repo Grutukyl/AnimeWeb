@@ -15,6 +15,13 @@ body {
     min-height: 100%;
 }
 
+.buscaFormButton{
+    display:none !important;
+
+}
+
+
+
 .blocos {
     grid-template-columns: repeat(5,3fr);
     grid-gap: 2vh;

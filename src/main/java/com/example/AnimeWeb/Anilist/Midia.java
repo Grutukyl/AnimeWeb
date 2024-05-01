@@ -12,12 +12,12 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.List;
 
 import static com.example.AnimeWeb.util.Util.callGraphQLService;
 
 public class Midia {
-
 
     private static final ObjectMapper objectMapper = new ObjectMapper()
             .enable(SerializationFeature.WRAP_ROOT_VALUE)
@@ -28,6 +28,49 @@ public class Midia {
 
     public static Data buscarAnimesFiltros(int page, String nome, String tipo, List<String> generos, Boolean hentai) throws URISyntaxException, IOException {
         String query = queryBuilder(page,nome, tipo, generos, hentai);
+
+        HttpResponse response = callGraphQLService("https://graphql.anilist.co/", query);
+        String json = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+        System.out.println(query);
+        Data parsedResponse = objectMapper.readValue(json, Data.class);
+        return parsedResponse;
+    }
+
+    public static Data buscarAnimesTemporada(int page) throws URISyntaxException, IOException {
+        LocalDate hoje = LocalDate.now();
+        String temporada = "";
+        int mes = hoje.getMonthValue();
+        if (mes >= 1 && mes <= 3) {
+            temporada = "WINTER";
+        } else if (mes >= 4 && mes <= 6) {
+            temporada = "SPRING";
+        } else if (mes >= 7 && mes <= 9) {
+            temporada = "SUMMER";
+        } else if (mes >= 10 && mes <= 12) {
+            temporada = "FALL";
+        }
+        String query = ("query {\n" +
+                "  Page(page: "+page+", perPage: 25) {\n" +
+                "    pageInfo {\n" +
+                "      total\n" +
+                "      currentPage\n" +
+                "      lastPage\n" +
+                "      hasNextPage\n" +
+                "      perPage\n" +
+                "    }\n" +
+                "    media(type: ANIME, season: "+temporada+", seasonYear: "+ hoje.getYear() +", genre_not_in: \"hentai\") {\n" +
+                "      id\n" +
+                "      season\n" +
+                "      title {\n" +
+                "        romaji\n" +
+                "      }\n" +
+                "      coverImage {\n" +
+                "        extraLarge\n" +
+                "        large\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }\n" +
+                "}");
 
         HttpResponse response = callGraphQLService("https://graphql.anilist.co/", query);
         String json = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);

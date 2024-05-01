@@ -28,36 +28,9 @@
 <body>
 <div class="listagem">
     <div class="box" th:class="${filtros.getGeneros().contains('hentai') ? 'box box3' : 'box'}">
-        <div class="box1">
-            <div class="caixaHeader">
-                <a  th:href="'/listagem'"><img class="logo" th:src="@{/rep/logoHorizontal.png}"></a>
-                <div class="caixaBuscaLinks">
-                    <div class="links">Início</div>
-                    <div class="links">Lista</div>
-                    <div class="links">Filmes</div>
-                    <div class="links">Check</div>
-                    <div class="links">Temporada</div>
+        <div th:include="header :: header"></div>
 
-                </div>
-            </div>
-            <div class="caixaBuscaHeader">
-                <div class="box2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="searchIco" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                    </svg>
-                    <form class="formBusca" method="get" th:action="@{/listagem}">
-                    <input class="buscaTexto" type="text"  name="buscaNome" placeholder="Buscar..." >
-                    </form>
-                </div>
-                <form th:action="@{logout}" method="post">
-                    <div>
-                        <input class="btn btn-danger logout" type="submit" value="Logout"/>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="wrapper12">
+        <div class="caixaTipo">
             <div class="conteudo">
                 <form class="formBusca" id="buscaForm" th:action="@{/listagem}" method="get">
                     <div class="radio-inputs" onclick="submitForm()">
@@ -81,69 +54,83 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="searchIco" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                         </svg>
-                        <input class="buscaTexto" type="text"  name="buscaNome" placeholder="Buscar por nome..." th:value="${filtros.getBuscaNome()}" >
+                        <input class="buscaTexto" type="text"  name="buscaNome" placeholder="Buscar por nome..." onchange="buscarOn(event)" th:value="${filtros.getBuscaNome()}" >
+                        <button id="buscaFormButton" class="page-link">BUSCAR</button>
                     </div>
 
                     <div class="caixaGeneros">
                         <div class="generos">
                             <input  class="generoCheckbox" type="checkbox" id="action"
                                     th:checked="${filtros.getGeneros().contains('action')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="action">
                             <label class="genero" for="action"> Action </label>
                             <input  class="generoCheckbox" type="checkbox" id="adventure"
                                     th:checked="${filtros.getGeneros().contains('adventure')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="adventure">
                             <label class="genero" for="adventure"> Adventure </label>
                             <input  class="generoCheckbox" type="checkbox" id="comedy"
                                     th:checked="${filtros.getGeneros().contains('comedy')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="comedy">
                             <label class="genero" for="comedy"> Comedy </label>
                             <input  class="generoCheckbox" type="checkbox" id="drama"
                                     th:checked="${filtros.getGeneros().contains('drama')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="drama">
                             <label class="genero" for="drama"> Drama </label>
                             <input  class="generoCheckbox" type="checkbox" id="fantasy"
                                     th:checked="${filtros.getGeneros().contains('fantasy')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="fantasy">
                             <label class="genero" for="fantasy"> Fantasy </label>
                             <input  class="generoCheckbox" type="checkbox" id="horror"
                                     th:checked="${filtros.getGeneros().contains('horror')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="horror">
                             <label class="genero" for="horror"> Horror </label>
                             <input  class="generoCheckbox" type="checkbox" id="mystery"
                                     th:checked="${filtros.getGeneros().contains('mystery')}" name="generos"
+                                    th:onclick="submitForm()"
                                     value="mystery">
                             <label class="genero" for="mystery"> Mystery </label>
                             <input class="generoCheckbox" type="checkbox" id="supernatural"
                                    th:checked="${filtros.getGeneros().contains('supernatural')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="supernatural">
                             <label class="genero" for="supernatural"> Supernatural </label>
                             <input class="generoCheckbox" type="checkbox" id="thriller"
                                    th:checked="${filtros.getGeneros().contains('thriller')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="thriller">
                             <label class="genero" for="thriller"> Thriller </label>
                             <input class="generoCheckbox" type="checkbox" id="psychological"
                                    th:checked="${filtros.getGeneros().contains('psychological')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="psychological">
                             <label class="genero" for="psychological"> Psychological </label>
                             <input class="generoCheckbox" type="checkbox" id="slice"
                                    th:checked="${filtros.getGeneros().contains('Slice of life')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="Slice of life">
                             <label class="genero" for="slice"> Slice of life </label>
                             <input class="generoCheckbox" type="checkbox" id="romance"
                                    th:checked="${filtros.getGeneros().contains('romance')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="romance">
                             <label class="genero" for="romance"> Romance </label>
                             <input class="generoCheckbox" type="checkbox" id="Sci-Fi"
                                    th:checked="${filtros.getGeneros().contains('Sci-Fi')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="Sci-Fi">
                             <label class="genero" for="Sci-Fi"> Sci-Fi </label>
                             <input class="generoCheckbox" type="checkbox" id="sports"
                                    th:checked="${filtros.getGeneros().contains('sports')}" name="generos"
+                                   th:onclick="submitForm()"
                                    value="sports">
                             <label class="genero" for="sports"> Sports </label>
                         </div>
-
                     </div>
                 </form>
 

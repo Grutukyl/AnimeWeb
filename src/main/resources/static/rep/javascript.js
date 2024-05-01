@@ -33,3 +33,9 @@ function atualizarTextoFavorito(checkbox) {
 function submitForm() {
     document.getElementById("buscaForm").submit();
 }
+
+function buscarOn(event){
+    var element = document.getElementById("buscaFormButton");
+    element.disabled = false;
+    element.style.display = "block";
+}

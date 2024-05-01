@@ -52,10 +52,9 @@ public class ListagemController {
                 ,isHentai));
         model.addAttribute("filtros", filtros);
         model.addAttribute("favoritos", favoritos);
-
+        model.addAttribute("pagina" , "lista");
         return "listagem";
     }
-
 
     @GetMapping("/media/{id}")
     public String media(@PathVariable int id, Model model) throws URISyntaxException, IOException {
@@ -86,11 +85,28 @@ public class ListagemController {
             Usuario user = usuario.getUser();
             favoritados = favoritoRepository.f(user.getId());
             favoritos = favoritoRepository.findByUsuario(user);
-            System.out.println(favoritos.get(0).getCoverImage());
-            System.out.println(favoritos.size());
         }
         model.addAttribute("favoritados", favoritados);
         model.addAttribute("listaFavoritos", favoritos);
+        model.addAttribute("pagina" , "favoritos");
         return "listagemFavoritos";
+    }
+
+    @GetMapping("/temporada")
+    public String temporada(Model model) throws URISyntaxException, IOException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        List<Integer> favoritos = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            UsuarioDetals usuario = (UsuarioDetals) authentication.getPrincipal();
+            Usuario user = usuario.getUser();
+            favoritos = favoritoRepository.f(user.getId());
+        }
+
+        model.addAttribute("favoritos", favoritos);
+        model.addAttribute("listagem", Midia.buscarAnimesTemporada(1));
+        model.addAttribute("pagina" , "temporada");
+        model.addAttribute("userName", "João");
+
+        return "temporada";
     }
 }
